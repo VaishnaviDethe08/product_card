@@ -4,8 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Cards</title>
+    <style>
+    .bags-card {
+        width: 250px;
+        border: 1px solid black;
+        border-radius: 10px 10px 10px 10px;
+        display: block;
+        margin: 0 auto;
+        padding: 10px 10px;
+        box-shadow: 0 0 5px 7px #d9d9d9;
+    }
+    .bags-img {
+        width: 200px;
+        padding-left: 10px;
+        margin: 10px;
+    }
+    .bags-name {
+      font-size: 20px;
+      margin-left: 14px;
+      padding: 5px;
+    }
+    .bags-desc {
+        font-size: 20px;
+        margin-left: 10px;
+        padding: 5px;
+       color: #d55dad;
+    }
+    .bags-price {
+        margin-left: 15px;
+        padding: 5px;
+    }
+    .bags-btn {
+        background-color: blue;
+        color: white;
+        border: none;
+        padding: 10px 30px;
+        border-radius: 50px;
+        box-shadow:0 1px 1px 2px gray;
+        display: block;
+        margin: 0 auto;
+        cursor: pointer;
+    }
+    .adisa-img {
+        height: 190px;
+        padding-left: 40px;
+        margin: 15px;
+    }
+    .ficro-img {
+        height: 190px;
+        padding-left: 25px;
+        margin: 15px;
+    }
+    .caption {
+        margin-left: 30px;
+    }
+    .quantity-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .minus {
+        height: 30px;
+        border-radius: 10px;
+        padding: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        cursor: pointer;
+    }
+</style>
 </head>
 <body>
-    
+<div class="bags-card">
+    <img src="./img/bag.jpg" / class="bags-img">
+    <h2 class="bags-name">Sky Bag</h2>
+    <p class="bags-desc">This Sky Bags are Water Proof Bag.you should carry in Rain</p>
+    <p class="bags-price"> Rs - 549</p>
+   <p id="show-quantity">1 * 549</p>
+   <p id="show-total">Total:549</p>
+
+   <div class="quantity-container">
+    <img src="./img/minus.png" class="minus" onclick="dec()" />
+    <span class="quantity-text" id="quantity-text">1</span>
+    <img src="./img/plus.png" class="minus" onclick="inc()" />
+    </div>
+    <button class="bags-btn">Buy Now</button>
+ </div>
+
+ 
+    <script>
+        function inc() {
+          const quantityText = document.getElementById("quantity-text");
+          const showQuantity = document.getElementById("show-quantity");
+          const showTotal = document.getElementById("show-total");
+
+          let quantity = parseInt(quantityText.innerText);
+
+          if (quantity < 10) {
+            quantityText.innerText = ++quantity;
+          }
+          else {
+            alert("you cant add more than 10 items");
+          }
+          showQuantity.innerText = `${quantity} = 549`;
+          showTotal.innerText = `Total: ${quantity*549}`;
+        }
+
+        function dec()
+        {
+          const quantityText = document.getElementById("quantity-text");
+          const showQuantity = document.getElementById("show-quantity");
+          const showTotal = document.getElementById("show-total");
+
+          let quantity = parseInt(quantityText.innerText);
+
+          if (quantity > 1) {
+            quantityText.innerText = --quantity;
+          }
+          else {
+            alert("you cant purchase zeroth items");
+          }
+          showQuantity.innerText = `${quantity} = 549`;
+          showTotal.innerText = `Total ${quantity*549}`;
+        }
+        </script>
 </body>
 </html>
